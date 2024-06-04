@@ -40,10 +40,17 @@ public class UserRequestController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<List<UserRequest>> getAllById(@PathVariable("id") UUID id) {
+    public ResponseEntity<List<GetUserRequest>> getAllById(@PathVariable("id") UUID id) {
         Optional<User> possibleUser = userRepository.findById(id);
         if (possibleUser.isPresent()) {
-            return ResponseEntity.ok(userRequestRepository.findAllByRequestOwner(possibleUser.get()));
+            List<UserRequest> allRequests = userRequestRepository.findAllByRequestOwner(possibleUser.get());
+            List<GetUserRequest> returnData = new ArrayList<>();
+            for (UserRequest u : allRequests) {
+                GetUserRequest userRequest = new GetUserRequest(u.getRequestOwner(), u.getReviewee(), u.isCompleted(),
+                        u.getReviewRequest().getName());
+                returnData.add(userRequest);
+            }
+            return ResponseEntity.ok(returnData);
         }
         return ResponseEntity.notFound().build();
     }

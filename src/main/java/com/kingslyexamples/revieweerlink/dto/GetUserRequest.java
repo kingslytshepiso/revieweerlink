@@ -18,36 +18,4 @@ public class GetUserRequest {
         this.reviewRequestName = reviewRequestName;
     }
 
-    public User getRequestOwner() {
-        return requestOwner;
-    }
-
-    public void setRequestOwner(User requestOwner) {
-        this.requestOwner = requestOwner;
-    }
-
-    public User getReviewee() {
-        return reviewee;
-    }
-
-    public void setReviewee(User reviewee) {
-        this.reviewee = reviewee;
-    }
-
-    public boolean isCompleted() {
-        return isCompleted;
-    }
-
-    public void setCompleted(boolean isCompleted) {
-        this.isCompleted = isCompleted;
-    }
-
-    public String getReviewRequestName() {
-        return reviewRequestName;
-    }
-
-    public void setReviewRequestName(String reviewRequestName) {
-        this.reviewRequestName = reviewRequestName;
-    }
-
 }
